@@ -2,6 +2,7 @@ import torch
 from torch import arccos, cos, nn, sin
 
 
+
 class ToHyperSphere(nn.Module):
     def __init__(self, input_dim):
         """
@@ -16,7 +17,7 @@ class ToHyperSphere(nn.Module):
         :return: torch.Tensor, tensor in N-sphere coordinates, shape [batch_size, embedding_dim]
         """
         if x.shape[1] != self.input_dim:
-            raise Exception
+            raise ValueError(f"Expected {self.input_dim} dimensions, nut found {x.shape[1]}")
 
         r = torch.norm(x, dim=1).reshape(-1, 1)
 
@@ -55,7 +56,7 @@ class ToEuclidean(nn.Module):
         :return: torch.Tensor, tensor in euclidean coordinates: shape [batch_size, embedding_dim]
         """
         if x.shape[1] != self.input_dim:
-            raise Exception
+            raise ValueError(f"Expected {self.input_dim} dimensions, nut found {x.shape[1]}")
 
         r = x[:, 0]
 

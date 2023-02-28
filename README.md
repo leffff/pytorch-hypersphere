@@ -26,7 +26,6 @@ x_eucl = torch.randn((4, 16)) # random floats in euclidian space
 x_sphere = ths(x_eucl) # transformation to hyperspherical
 
 x_eucl_2 = te(x_sphere) # transformation back to euclidean
-
 ```
 
 
@@ -44,7 +43,6 @@ x_eucl = torch.randn((4, 16)) # random floats in euclidian space
 x_sphere = to_hypersphere(x_eucl) # transformation to hyperspherical
 
 x_eucl_2 = to_euclidean(x_sphere) # transformation back to euclidean
-
 ```
 
 
@@ -53,11 +51,11 @@ x_eucl_2 = to_euclidean(x_sphere) # transformation back to euclidean
 
 ```python
 
-from rand import randn_spherical
+from rand import euclidean_randn_spherical, nsphere_randn_spherical
 
 
-random_hyperspherical_points = randn_spherical(shape=(4, 16)) # generate points randomly distributed on a sphere
-
+random_points_on_sphere_in_euclidean = euclidean_randn_spherical(shape=(4, 16), stretch_coefficient=2) # generate points randomly distributed on a sphere, in euclidean coordinates, with radius of 2
+random_points_on_sphere_in_nsphere = nsphere_randn_spherical(shape=(4, 16), stretch_coefficient=1) # generate points randomly distributed on a sphere, in spherical coordinates, with radius of 1
 ```
 
 

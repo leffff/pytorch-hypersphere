@@ -1,2 +1,4 @@
-numpy
-torch
+numpy==1.24.2
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==2.0.0
+pytest~=7.2.2

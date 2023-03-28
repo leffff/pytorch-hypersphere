@@ -13,7 +13,8 @@ Package listing:
 import torch
 
 
-from layers import ToHyperSphere, ToEuclidean
+from layers.hyper_sphere import ToHyperSphere
+from layers.euclidean import ToEuclidean
 
 
 ths = ToHyperSphere(16) # initialize transformation layer

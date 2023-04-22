@@ -1,6 +1,7 @@
 import torch
 from torch import arccos, cos, nn, sin
 
+from pytorch_hypersphere.functional import project_to_sphere
 
 
 class ToHyperSphere(nn.Module):
@@ -79,3 +80,14 @@ class ToEuclidean(nn.Module):
 
     def __repr__(self) -> str:
         return f"ToEuclidean({self.input_dim})"
+
+
+class ProjectToSphere(nn.Module):
+    def __init__(self, sphere_center: torch.Tensor, sphere_radius: float):
+        super().__init__()
+        self.sphere_center = sphere_center
+        self.sphere_radius = sphere_radius
+
+    def forward(self,x: torch.Tensor) -> torch.Tensor:
+        return project_to_sphere(self.sphere_center, self.sphere_radius, x)
+

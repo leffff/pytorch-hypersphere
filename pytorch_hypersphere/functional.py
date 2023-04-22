@@ -52,3 +52,19 @@ def to_euclidean(x: torch.Tensor) -> torch.Tensor:
     euclidean = torch.cat(xs, dim=1)
 
     return euclidean
+
+
+def project_to_sphere(sphere_center: torch.Tensor, sphere_radius: float, x: torch.Tensor):
+    """
+    :param sphere_center: torch.Tensor
+    :param sphere_radius: torch.Tensor
+    :param x: torch.Tensor
+    :return: torch.Tensor
+
+    Solution was taken from here: https://stackoverflow.com/questions/9604132/how-to-project-a-point-on-to-a-sphere
+    """
+
+    delta = sphere_radius / x.norm(dim=1) * x
+    x_proj = delta + sphere_center
+
+    return x_proj

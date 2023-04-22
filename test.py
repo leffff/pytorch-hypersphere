@@ -1,6 +1,6 @@
 import torch
 
-from layers import ToEuclidean, ToHyperSphere
+from pytorch_hypersphere.layers import ToEuclidean, ToHyperSphere
 
 ths = ToHyperSphere(16)
 te = ToEuclidean(16)

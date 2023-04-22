@@ -12,20 +12,17 @@ Package listing:
 
 import torch
 
+from pytorch_hypersphere.layers import ToHyperSphere, ToEuclidean
 
-from layers import ToHyperSphere, ToEuclidean
+ths = ToHyperSphere(16)  # initialize transformation layer
 
+te = ToEuclidean(16)  # initialize transformation layer
 
-ths = ToHyperSphere(16) # initialize transformation layer
+x_eucl = torch.randn((4, 16))  # random floats in euclidian space
 
-te = ToEuclidean(16) # initialize transformation layer
+x_sphere = ths(x_eucl)  # transformation to hyperspherical
 
-
-x_eucl = torch.randn((4, 16)) # random floats in euclidian space
-
-x_sphere = ths(x_eucl) # transformation to hyperspherical
-
-x_eucl_2 = te(x_sphere) # transformation back to euclidean
+x_eucl_2 = te(x_sphere)  # transformation back to euclidean
 ```
 
 
@@ -35,14 +32,13 @@ x_eucl_2 = te(x_sphere) # transformation back to euclidean
 
 import torch
 
-from functional import to_hypersphere, to_euclidean
+from pytorch_hypersphere.functional import to_hypersphere, to_euclidean
 
+x_eucl = torch.randn((4, 16))  # random floats in euclidian space
 
-x_eucl = torch.randn((4, 16)) # random floats in euclidian space
+x_sphere = to_hypersphere(x_eucl)  # transformation to hyperspherical
 
-x_sphere = to_hypersphere(x_eucl) # transformation to hyperspherical
-
-x_eucl_2 = to_euclidean(x_sphere) # transformation back to euclidean
+x_eucl_2 = to_euclidean(x_sphere)  # transformation back to euclidean
 ```
 
 

@@ -47,7 +47,7 @@ x_eucl_2 = to_euclidean(x_sphere)  # transformation back to euclidean
 
 ```python
 
-from rand import euclidean_randn_spherical, nsphere_randn_spherical
+from pytorch_hypersphere.random import euclidean_randn_spherical, nsphere_randn_spherical
 
 
 random_points_on_sphere_in_euclidean = euclidean_randn_spherical(shape=(4, 16), stretch_coefficient=2) # generate points randomly distributed on a sphere, in euclidean coordinates, with radius of 2
